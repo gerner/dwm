@@ -211,6 +211,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void focusbynum(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -1733,6 +1734,19 @@ togglefloating(const Arg *arg)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
 	arrange(selmon);
+}
+
+void
+focusbynum(const Arg *arg)
+{
+	int i;
+	Client *c;
+
+	i = 0;
+	c = nexttiled(selmon->clients);
+
+	for (; c && i < arg->i; c = nexttiled(c->next), i++);
+	focus(c);
 }
 
 void

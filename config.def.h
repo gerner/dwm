@@ -109,6 +109,16 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	{ MODMETAKEY,                   XK_1,      focusbynum,     {.i = 0} },
+	{ MODMETAKEY,                   XK_2,      focusbynum,     {.i = 1} },
+	{ MODMETAKEY,                   XK_3,      focusbynum,     {.i = 2} },
+	{ MODMETAKEY,                   XK_4,      focusbynum,     {.i = 3} },
+	{ MODMETAKEY,                   XK_5,      focusbynum,     {.i = 4} },
+	{ MODMETAKEY,                   XK_6,      focusbynum,     {.i = 5} },
+	{ MODMETAKEY,                   XK_7,      focusbynum,     {.i = 6} },
+	{ MODMETAKEY,                   XK_8,      focusbynum,     {.i = 7} },
+	{ MODMETAKEY,                   XK_9,      focusbynum,     {.i = 8} },
+	{ MODMETAKEY|ShiftMask,         XK_0,      focusbynum,     {.i = 9} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
     { MODMETAKEY,                   XK_l,      spawn,          {.v = lockcmd } },
     { MODKEY,                       XK_c,      spawn,          {.v = dclip_copy_cmd } },
