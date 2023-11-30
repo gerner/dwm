@@ -1747,6 +1747,7 @@ focusbynum(const Arg *arg)
 
 	for (; c && i < arg->i; c = nexttiled(c->next), i++);
 	focus(c);
+	restack(selmon);
 }
 
 void
