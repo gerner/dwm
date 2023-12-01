@@ -813,8 +813,12 @@ drawbar(Monitor *m)
 				tw = MIN(m->sel == c ? w : mw, TEXTW(c->name));
 
 				drw_setscheme(drw, scheme[m == selmon && m->sel == c ? SchemeSel : SchemeNorm]);
-				if (tw > lrpad / 2)
+				if (tw > lrpad / 2) {
+					XSetErrorHandler(xerrordummy);
 					drw_text(drw, x, 0, tw, bh, lrpad / 2, c->name, 0);
+					XSync(dpy, False);
+					XSetErrorHandler(xerror);
+				}
 				if (c->isfloating)
 					drw_rect(drw, x + boxs, boxs, boxw, boxw, c->isfixed, 0);
 				x += tw;
