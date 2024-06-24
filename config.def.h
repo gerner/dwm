@@ -72,8 +72,8 @@ static const char *upvol[] = { "amixer", "-D", "pulse", "set", "Master", "5%+", 
 static const char *downvol[] = { "amixer", "-D", "pulse", "set", "Master", "5%-", NULL};
 static const char *mute_toggle_vol[] = { "amixer", "-D", "pulse", "set", "Master", "toggle", NULL};
 static const char *mute_mic_toggle_vol[] = { "amixer", "-D", "pulse", "set", "Capture", "toggle", NULL};
-static const char *upbrightness[] = { "xbacklight", "-inc", "10", NULL};
-static const char *downbrightness[] = { "xbacklight", "-dec", "10", NULL};
+static const char *upbrightness[] = { "brightnessctl", "s", "5%+", NULL};
+static const char *downbrightness[] = { "brightnessctl", "s", "5%-", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
