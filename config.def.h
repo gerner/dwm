@@ -68,12 +68,13 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[] = { "lock", NULL };
 static const char *dclip_copy_cmd[] = { "dclip", "copy" };
 static const char *dclip_paste_cmd[] = { "dclip", "paste", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor , "-sf", selfgcolor, NULL };
-static const char *upvol[] = { "amixer", "-D", "pulse", "set", "Master", "5%+", NULL};
-static const char *downvol[] = { "amixer", "-D", "pulse", "set", "Master", "5%-", NULL};
-static const char *mute_toggle_vol[] = { "amixer", "-D", "pulse", "set", "Master", "toggle", NULL};
-static const char *mute_mic_toggle_vol[] = { "amixer", "-D", "pulse", "set", "Capture", "toggle", NULL};
+static const char *upvol[] = { "pamixer", "-i", "5", NULL};
+static const char *downvol[] = { "pamixer", "-d", "5", NULL};
+static const char *mute_toggle_vol[] = { "pamixer", "-t", NULL};
+static const char *mute_mic_toggle_vol[] = { "amixer", "--default-source", "-t", NULL};
 static const char *upbrightness[] = { "brightnessctl", "s", "5%+", NULL};
 static const char *downbrightness[] = { "brightnessctl", "s", "5%-", NULL};
+static const char *keyboardcmd[] = { "keyboard", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -139,6 +140,7 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = keyboardcmd } },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODMETAKEY,     Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODMETAKEY,     Button2,        togglefloating, {0} },
